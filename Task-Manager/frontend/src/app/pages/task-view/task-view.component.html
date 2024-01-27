@@ -24,14 +24,8 @@
       <h1 class="title has-text-primary">Tasks:</h1>
       <!--  Task Elements -->
 
-      <div class="task complete">
-        <p>This is something I have to do</p>
-      </div>
-      <div class="task">
-        <p>This is something I have to do2</p>
-      </div>
-      <div class="task">
-        <p>This is something I have to do3</p>
+      <div class="task" *ngFor="let task of tasks">
+        <p>{{ task.title }}</p>
       </div>
     </div>
   </div>
