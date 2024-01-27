@@ -1,0 +1,22 @@
+<div class="centered-content">
+  <div class="model-box">
+    <h1 class="title">Create a New List</h1>
+
+    <input
+      #listTitleName
+      class="input is-medium"
+      type="text"
+      placeholder="Add a New List"
+    />
+    <br /><br />
+    <div class="buttons is-right">
+      <button class="button is-medium" (click)="onNewClick()">Cancel</button>
+      <button
+        class="button is-primary is-medium"
+        (click)="createList(listTitleName.value)"
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</div>

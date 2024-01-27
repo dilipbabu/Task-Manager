@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 const { mongoose } = require("./db/mongoose");
 
@@ -11,7 +13,26 @@ const { List, Task } = require("./db/models");
 
 //Load Middleware
 
+// CORS HEADERS MIDDLEWARE
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+// app.get('/', function(req, res, next) {
+//   // Handle the get for this route
+// });
+
+// app.post('/', function(req, res, next) {
+//  // Handle the post for this route
+// });
+
 /* Route Handlers */
 
 /* List Routes */

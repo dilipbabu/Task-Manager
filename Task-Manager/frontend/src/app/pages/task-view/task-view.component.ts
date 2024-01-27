@@ -1,21 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../task.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-task-view',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './task-view.component.html',
-  styleUrl: './task-view.component.scss',
+  styleUrls: ['./task-view.component.scss'],
 })
 export class TaskViewComponent implements OnInit {
-  constructor(private TaskService: TaskService) {}
+  lists: any;
+  tasks: any;
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
-
-  createNewList() {
-    this.TaskService.createList('Testing').subscribe((response: any) => {
-      console.log(response);
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      console.log(params);
+      this.taskService.getTasks(params['listId']).subscribe((tasks: any) => {
+        this.tasks = tasks;
+      });
     });
+
+    this.taskService.getLists().subscribe((lists: any) => {
+      this.lists = lists;
+    });
+  }
+
+  onNewListClick() {
+    console.log('Button clicked');
+    this.router.navigate(['/new-list']);
   }
 }

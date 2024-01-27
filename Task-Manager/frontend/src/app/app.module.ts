@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [],
   imports: [BrowserModule, CommonModule, HttpClientModule],
-  providers: [HttpClientModule],
+  providers: [],
+  bootstrap: [],
 })
 export class AppModule {}
