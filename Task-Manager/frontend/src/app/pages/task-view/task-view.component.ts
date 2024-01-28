@@ -3,7 +3,6 @@ import { TaskService } from '../../task.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 @Component({
   selector: 'app-task-view',
   standalone: true,

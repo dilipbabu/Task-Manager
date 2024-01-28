@@ -8,17 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class TaskService {
   constructor(private webReqService: WebRequestService) {}
+
+  getTasks(listId: string) {
+    return this.webReqService.get(`lists/${listId}/tasks`);
+  }
   createList(title: string) {
     // We want to send a web request to create a list
 
     return this.webReqService.post('lists', { title }) as Observable<List>;
   }
-
   getLists() {
     return this.webReqService.get('lists');
-  }
-
-  getTasks(listId: string) {
-    return this.webReqService.get(`lists/${listId}/tasks`);
   }
 }
