@@ -21,11 +21,19 @@ export class NewTaskComponent implements OnInit {
       this.listId = params['listId'];
     });
   }
-  createTask(title: string) {
-    this.taskService.createList(title).subscribe((response: any) => {
-      console.log(response);
+  // createTask(title: string) {
+  //   this.taskService.createList(title).subscribe((response: any) => {
+  //     console.log(response);
 
-      // Now we navigate to /lists/response._id
-    });
+  //     // Now we navigate to /lists/response._id
+  //   });
+
+  createTask(title: string) {
+    this.taskService
+      .createList(title, this.listId)
+      .subscribe((response: any) => {
+        console.log(response);
+        // Now we navigate to /lists/response._id
+      });
   }
 }

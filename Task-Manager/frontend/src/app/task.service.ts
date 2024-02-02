@@ -12,11 +12,18 @@ export class TaskService {
   getTasks(listId: string) {
     return this.webReqService.get(`lists/${listId}/tasks`);
   }
-  createList(title: string) {
-    // We want to send a web request to create a list
+  // createList(title: string) {
+  //   // We want to send a web request to create a list
 
-    return this.webReqService.post('lists', { title }) as Observable<List>;
+  //   return this.webReqService.post('lists', { title }) as Observable<List>;
+  // }
+
+  createList(title: string, listId?: string) {
+    // If listId is provided, associate the task with the specified list
+    const body = listId ? { title, listId } : { title };
+    return this.webReqService.post('lists', body) as Observable<List>;
   }
+
   getLists() {
     return this.webReqService.get('lists');
   }

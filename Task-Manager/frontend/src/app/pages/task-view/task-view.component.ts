@@ -12,7 +12,8 @@ import { RouterModule } from '@angular/router';
 })
 export class TaskViewComponent implements OnInit {
   lists: any;
-  tasks: any;
+  //tasks: any;
+  tasks: any[] = [];
   constructor(
     private taskService: TaskService,
     private router: Router,
